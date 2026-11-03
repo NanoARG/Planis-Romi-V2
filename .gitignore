@@ -1,0 +1,19 @@
+# Dependencias
+node_modules/
+
+# Archivos generados
+dist/
+build/
+
+# Archivos temporales
+*.log
+.DS_Store
+Thumbs.db
+
+# Configuración local y credenciales
+.env
+.env.*
+
+# Archivos de respaldo
+*.bak
+*.old

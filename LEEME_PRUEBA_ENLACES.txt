@@ -1,0 +1,22 @@
+ROMA FITNESS V2 - PRUEBA DE PDF CON ENLACES DE VIDEO
+
+Qué se agregó:
+- Botón "Generar PDF" en la pantalla de planificación directa (grilla).
+- PDF con identidad visual Roma Fitness: fondo oscuro, detalles violetas y tipografías incluidas.
+- Si una celda contiene un enlace de YouTube, el PDF oculta la URL y agrega "▶ VER VIDEO" clickeable.
+- Se incluye fuentes_roma.js porque el HTML lo referencia y el ZIP de origen no lo traía, aunque sí incluía los archivos TTF.
+
+Cómo probar:
+1. Descomprimí el ZIP completo en una carpeta nueva, sin mezclarlo con la instalación actual.
+2. Abrí el proyecto como lo hacés habitualmente (o ejecutá npm install si fuera necesario y luego npm start).
+3. Entrá a BOX ROMA > Planificar directamente > Abrir planificador semanal.
+4. Elegí disciplina y fecha de inicio.
+5. En una celda, escribí algunos ejercicios y pegá al final un enlace real de YouTube, por ejemplo:
+   Movilidad de hombros - 2 min
+   https://www.youtube.com/watch?v=dQw4w9WgXcQ
+6. Presioná "Generar PDF".
+7. Abrí el PDF y hacé clic en "VER VIDEO" para comprobar que abra YouTube.
+
+Importante:
+- El PDF se genera con una página por día; los enlaces se detectan por celda.
+- Esta es una versión de prueba. Conservá tu carpeta/instalador actual hasta comprobar la generación del PDF y los enlaces.

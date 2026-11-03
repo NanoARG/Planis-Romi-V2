@@ -1,0 +1,24 @@
+ROMI TRAINING PLANNER — GRILLA V4
+
+Cambios de esta versión:
+1. El historial se abre en una ventana independiente mediante el botón “Ver historial”.
+2. Incluye filtros por mes y disciplina, y un botón para limpiar los filtros.
+3. Cada registro destaca el mes/año para identificar rápidamente a qué período corresponde.
+4. Se redujo el espacio superior y se compactó el encabezado para llegar antes a la planificación.
+5. Se conserva el fondo durazno pastel de la grilla.
+
+Importante:
+- Probá esta versión en una carpeta nueva, sin reemplazar tu aplicación original.
+- Las planificaciones guardadas se almacenan en el navegador/localStorage de esa instalación. No borres los datos del navegador de la aplicación original.
+- Esta actualización se preparó sobre la versión de grilla V3; verificá visualmente el flujo antes de reemplazar el ejecutable.
+
+
+Actualización V5: en el historial, el botón “Ver semana” despliega una vista compacta de la planificación dentro de la misma ventana. No modifica ni guarda cambios; para trabajar sobre la planificación, usá “Editar”.
+
+
+VERSIÓN V6 — MENÚ PRINCIPAL
+- El menú inicial ahora ofrece dos opciones: Roma Fitness y Planificación personalizada.
+- Roma Fitness abre el gestor existente de PDF y permite entrar al nuevo planificador semanal sin pedir nombre de cliente.
+- Planificación personalizada abre la grilla con el campo para identificar cliente o plan.
+- El historial separa las planificaciones por tipo (Roma Fitness / personalizada).
+- Los archivos originales del proyecto no se modifican; probá esta versión en una carpeta independiente.

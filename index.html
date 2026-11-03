@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Romi Training Planner</title>
+
+    <link rel="stylesheet" href="./estilos.css">
+
+    <script src="./bibliotecas/xlsx.full.min.js"></script>
+    <script src="./bibliotecas/jspdf.umd.min.js"></script>
+    <script src="./fuentes_roma.js"></script>
+    <script defer src="./app.js"></script>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO PRINCIPAL -->
+    <header class="encabezado-principal">
+        <img
+            src="assets/logo_romi.png"
+            alt="Romi Training Planner"
+            class="logo-romi"
+        >
+
+        <p>Planificación y gestión de entrenamientos</p>
+    </header>
+
+    <main>
+
+        <!-- PANTALLA DE INICIO -->
+        <section id="pantallaInicio" class="pantalla">
+
+            <div class="presentacion">
+                <h2>Tu espacio de planificación</h2>
+
+                <p>
+                    Creá, organizá y gestioná tus planificaciones
+                    de entrenamiento desde un solo lugar.
+                </p>
+            </div>
+
+            <div class="menu-modulos menu-dos-opciones">
+
+                <button type="button" class="tarjeta-modulo" id="btnBoxRoma">
+                    <span class="numero-modulo">01</span>
+                    <span class="titulo-modulo">ROMA FITNESS</span>
+                    <span class="descripcion-modulo">Planificaciones semanales del gimnasio: CrossFit, Funcional y Hyrox.</span>
+                    <span class="accion-modulo">INGRESAR →</span>
+                </button>
+
+                <button type="button" class="tarjeta-modulo" id="btnPlanificacionesPersonales">
+                    <span class="numero-modulo">02</span>
+                    <span class="titulo-modulo">PLANIFICACIÓN PERSONALIZADA</span>
+                    <span class="descripcion-modulo">Creá planes para cada cliente y consultá sus semanas guardadas.</span>
+                    <span class="accion-modulo">INGRESAR →</span>
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- MÓDULO BOX ROMA -->
+        <section id="pantallaBoxRoma" class="pantalla" hidden>
+
+            <div class="encabezado-modulo">
+                <button
+                    type="button"
+                    class="btn-volver"
+                    id="btnVolverInicio"
+                >
+                    ← Volver al inicio
+                </button>
+
+                <h2>BOX ROMA</h2>
+
+                <p>
+                    Seleccioná una disciplina para generar
+                    la planificación semanal.
+                </p>
+            </div>
+
+            <!-- GENERADOR DE PDF EXISTENTE -->
+            <section class="panel">
+
+                <h3>Planificación semanal</h3>
+
+                <p>Seleccioná la disciplina que querés generar.</p>
+
+                <div class="selector-disciplinas">
+
+                    <label class="tarjeta-disciplina">
+                        <input
+                            type="radio"
+                            name="disciplina"
+                            value="CrossFit"
+                            required
+                        >
+
+                        <span class="nombre-disciplina">CROSSFIT</span>
+                        <span class="indicador-seleccion"></span>
+                    </label>
+
+                    <label class="tarjeta-disciplina">
+                        <input
+                            type="radio"
+                            name="disciplina"
+                            value="Funcional"
+                        >
+
+                        <span class="nombre-disciplina">FUNCIONAL</span>
+                        <span class="indicador-seleccion"></span>
+                    </label>
+
+                    <label class="tarjeta-disciplina">
+                        <input
+                            type="radio"
+                            name="disciplina"
+                            value="Hyrox"
+                        >
+
+                        <span class="nombre-disciplina">HYROX</span>
+                        <span class="indicador-seleccion"></span>
+                    </label>
+
+                </div>
+
+                <p>
+                    Seleccioná el archivo Excel con la planificación semanal.
+                </p>
+
+                <label for="archivoExcel">
+                    Archivo de planificación
+                </label>
+
+                <input
+                    type="file"
+                    id="archivoExcel"
+                    accept=".xlsx,.xls"
+                >
+
+                <button id="btnGenerarPDF" disabled>
+                    Generar PDF
+                </button>
+
+                <p id="mensaje" role="status">
+                    Seleccioná un archivo Excel para comenzar.
+                </p>
+
+            </section>
+
+            <section class="panel panel-acceso-grilla">
+                <h3>Planificar directamente</h3>
+                <p>También podés escribir y guardar la semana desde la grilla, sin preparar un Excel.</p>
+                <button type="button" id="btnAbrirGrillaRoma" class="btn-grilla-principal">Abrir planificador semanal</button>
+            </section>
+
+            <section id="vistaPrevia" hidden>
+
+                <h3>Vista previa de la planificación</h3>
+
+                <div id="contenidoPlanificacion"></div>
+
+            </section>
+
+        </section>
+
+        <!-- MÓDULO DE PLANIFICACIONES PERSONALES -->
+
+        <section
+            id="pantallaPlanificacionesPersonales"
+            class="pantalla"
+            hidden
+        >
+            <div class="encabezado-modulo">
+
+                <button
+                    type="button"
+                    class="btn-volver"
+                    id="btnVolverPersonales"
+                >
+                    ← Volver al inicio
+                </button>
+
+                <h2>PLANIFICACIONES PERSONALES</h2>
+
+                <p>
+                    Creá y organizá los programas de entrenamiento
+                    de tus clientes.
+                </p>
+
+                <div class="panel panel-personales">
+
+                    <h3>Generar planificación semanal</h3>
+
+                    <p>
+                        Seleccioná el archivo Excel que contiene
+                        las planificaciones personales de tus clientes.
+                    </p>
+
+                    <div class="campo-personales">
+
+                        <label for="archivoExcelPersonales">
+                            Archivo Excel
+                        </label>
+
+                        <input
+                            type="file"
+                            id="archivoExcelPersonales"
+                            accept=".xlsx,.xls"
+                        >
+
+                    </div>
+
+                    <div
+                        id="estadoArchivoPersonales"
+                        class="estado-personales"
+                        aria-live="polite"
+                    >
+                        Seleccioná un archivo Excel para comenzar.
+                    </div>
+
+                    <div
+                        id="semanasPersonales"
+                        class="semanas-personales"
+                        hidden
+                    >
+
+                        <h4>Semanas disponibles</h4>
+
+                        <p>
+                            Seleccioná las semanas que querés generar.
+                            Se creará un PDF por cada semana seleccionada.
+                        </p>
+
+                        <div id="listaSemanasPersonales">
+                            <!-- Las semanas se cargarán desde JavaScript -->
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        id="btnGenerarPDFPersonales"
+                        disabled
+                    >
+                        Generar PDF
+                    </button>
+
+                    <div
+                        id="resultadoPDFPersonales"
+                        class="resultado-personales"
+                        aria-live="polite"
+                    >
+                        <!-- Acá mostraremos el resultado de la generación -->
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+        <!-- PLANIFICADOR SEMANAL EN GRILLA -->
+        <section id="pantallaPlanificadorGrilla" class="pantalla" hidden>
+            <div class="encabezado-modulo grilla-encabezado">
+                <div class="grilla-topline"><button type="button" class="btn-volver" id="btnVolverGrilla">← Volver al menú</button><button type="button" id="btnAbrirHistorial" class="btn-historial">Ver historial</button></div>
+                <h2 id="tituloGrilla">ROMA FITNESS · PLANIFICACIÓN SEMANAL</h2>
+                <p id="subtituloGrilla">Organizá la semana completa desde una sola pantalla.</p>
+            </div>
+            <div class="grilla-meta panel">
+                <div class="campo-grilla campo-plan-nombre" id="campoNombrePlan"><label for="grillaNombre">CLIENTE / PLAN</label><input id="grillaNombre" type="text" maxlength="100" placeholder="Ej.: Nombre del cliente o plan"></div>
+                <div class="campo-grilla"><label for="grillaDisciplina">DISCIPLINA</label><select id="grillaDisciplina"><option>CrossFit</option><option>Funcional</option><option>Hyrox</option></select></div>
+                <div class="campo-grilla"><label for="grillaSemana">SEMANA</label><input id="grillaSemana" type="number" min="1" max="999" value="1"></div>
+                <div class="campo-grilla"><label for="grillaFechaInicio">INICIO DE SEMANA</label><input id="grillaFechaInicio" type="date"></div>
+                <div class="grilla-acciones"><button type="button" id="btnGrillaNueva">Nueva semana</button><button type="button" id="btnGrillaCopiar">Copiar semana anterior</button><button type="button" class="btn-grilla-principal" id="btnGrillaGuardar">Guardar planificación</button><button type="button" id="btnGrillaGenerarPDF" class="btn-grilla-pdf">Generar PDF</button></div>
+            </div>
+            <p id="grillaEstado" class="grilla-estado" aria-live="polite"></p>
+            <div class="grilla-tabla-contenedor"><table id="tablaPlanificador" class="tabla-planificador"><thead></thead><tbody></tbody></table></div>
+        </section>
+
+        <dialog id="modalHistorialGrilla" class="modal-historial-grilla">
+            <div class="historial-cabecera"><div><h2>HISTORIAL</h2><p>Buscá planificaciones guardadas por mes y disciplina.</p></div><button type="button" id="btnCerrarHistorial" class="historial-cerrar" aria-label="Cerrar historial">✕</button></div>
+            <div class="historial-filtros">
+                <div><label for="filtroMesHistorial">MES</label><input type="month" id="filtroMesHistorial"></div>
+                <div><label for="filtroDisciplinaHistorial">DISCIPLINA</label><select id="filtroDisciplinaHistorial"><option value="">Todas las disciplinas</option><option>CrossFit</option><option>Funcional</option><option>Hyrox</option></select></div>
+                <button type="button" id="btnLimpiarFiltrosHistorial">Limpiar filtros</button>
+            </div>
+            <div id="grillaListaGuardadas" class="grilla-lista-guardadas historial-lista"></div>
+        </dialog>
+
+    <footer>
+        <p>Romi Training Planner · Planificación de entrenamientos</p>
+    </footer>
+
+</body>
+</html>

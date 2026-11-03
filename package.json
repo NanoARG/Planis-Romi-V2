@@ -1,0 +1,46 @@
+{
+  "name": "romi-training-planner",
+  "version": "1.0.0",
+  "description": "Aplicación para gestionar y generar planificaciones de entrenamiento",
+  "main": "main.js",
+  "author": "Romi Training Planner",
+  "license": "ISC",
+  "type": "commonjs",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "^45.0.0",
+    "electron-builder": "^26.18.0"
+  },
+  "build": {
+    "appId": "com.romitrainingplanner.app",
+    "productName": "Romi Training Planner",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "index.html",
+      "estilos.css",
+      "app.js",
+      "fuentes_roma.js",
+      "bibliotecas/**/*",
+      "fuentes/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/romi_training_planner.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Romi Training Planner"
+    }
+  }
+}
